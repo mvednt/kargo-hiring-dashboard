@@ -1,0 +1,313 @@
+KARGO HIRING RUBRIC  ·  v2 (scoring matrix)
+Derived from the 8 past-hire profiles and their performance ratings.
+NOT derived from the job descriptions.
+
+===============================================================
+THE PATTERNS  (source of every criterion below)
+===============================================================
+Exceeds Expectations: Rohan Desai, Sunita Krishnamurthy, Aditya Shetty,
+                      Meghna Tiwari, Lavanya Iyer
+Meets Expectations:   Vikram Nair, Rahul Bose
+Below Expectations:   Preetham Rao
+
+PATTERN 1 - They have personally been accountable inside a logistics
+operation, not adjacent to one.
+All five Exceeds hires held a job where freight, documents or carriers moved
+or failed because of them: Rohan (3 yrs Operations Executive at a CHA firm at
+JNPT, 180+ shipments/month of BoL and customs paperwork), Sunita (7 yrs
+freight forwarding documentation, DGFT, ICEGATE EDI, two customs inspections
+closed without penalty), Aditya (2 yrs commercial ops at Jacaranda's JNPT
+terminal, alongside terminal operations during peak), Meghna (2.5 yrs at
+Coastline Freight on export documentation, including a 7pm customs hold worked
+through the night), Lavanya (3 yrs carrier allocation and exception management
+at Mahindra Logistics, 800+ shipments/month). The three non-Exceeds hires have
+none of it: Vikram is HR-tech SaaS only, Rahul is fintech and HR-tech
+marketing, Preetham integrated 3PL APIs from an e-commerce backend team but
+never carried operational consequence.
+
+PATTERN 2 - They have run something with no senior counterpart above them.
+Rohan: "comfortable as the most senior engineer in the room", translating field
+requirements into spec "without a product layer". Sunita: five years
+self-employed, "owning processes from start to finish with limited oversight".
+Aditya: full sales cycle alone, "no account manager layer between the client
+and execution", 8 of 14 accounts self-sourced. Meghna: owns QBRs, escalations
+and renewals for her whole book, "no escalation to management in the last 14
+months". Lavanya: "sole PM"; her engineering lead's review note reads "she
+doesn't hedge". Against that, Vikram "supported senior PMs" inside a 4-person
+PM team, and Preetham is one of twelve on a platform team.
+
+PATTERN 3 - Their record names something that went wrong and what they did.
+Lavanya killed two of her own six shipped features on usage data and wrote the
+post-mortem after a 4-hour outage. Aditya documented a 4-month deal he lost,
+named his own misread of the economic buyer, and made the post-mortem standard
+practice. Sunita rebuilt the documentation workflow over a weekend when a
+vendor broke the export format without notice. Meghna raised an undocumented
+product limitation affecting four accounts and ran comms through the 6-week
+fix. Rohan cut P1 incidents 40% by introducing review and on-call. Vikram,
+Rahul and Preetham present unbroken win narratives - no kill, no loss, no
+reversal anywhere in their record.
+
+===============================================================
+CALIBRATION  -  read before scoring anything
+===============================================================
+- Score the evidence, not the vocabulary. A CV is a sales document; most of it
+  is written to sound like the top band.
+- Claims with no outcome attached, tool and platform lists, certifications,
+  course names, institution names, job titles and years of experience are
+  BASELINE. They cannot score above 3 on any criterion, however senior they
+  sound. This includes elite institutions and well-known product courses -
+  they are not evidence of any criterion here.
+- Generic professional phrasing - "fast-paced environment", "cross-functional
+  collaboration", "stakeholder management", "data-driven decisions",
+  "end-to-end ownership" with nothing named - is baseline. Score it 3, not 5.
+- A number is only evidence if it is attached to something the candidate did.
+  "Managed a 40-person platform" is baseline; "cut P1 incidents 40% in 6 months
+  by introducing code review and on-call" is not.
+- Seniority in the title is not seniority in the decision. Ask who made the call.
+- Reserve 9-10 for evidence a sceptical reader could not argue with: named,
+  specific and consequential.
+- If two bands look defensible, take the lower one. Under-scoring is
+  recoverable - the candidate is still visible below the line. Over-scoring
+  puts the wrong person in front of the founder.
+
+===============================================================
+WEIGHTS
+===============================================================
+Criterion                                  PM     SPM
+Operational Accountability in Logistics    25%    20%
+Ownership Without Cover                    20%    30%
+Documented Reversal or Failure             20%    20%
+Built the Missing Thing                    20%    15%
+Absorbed Load Without Escalation           15%    15%
+                                          ----   ----
+                                          100%   100%
+
+Weighted total = sum over criteria of (score / 10) x weight,  range 0-100.
+
+===============================================================
+SCORING MATRIX
+===============================================================
+
+---------------------------------------------------------------
+PRODUCT MANAGER
+---------------------------------------------------------------
+
+Criterion name: Operational Accountability in Logistics
+Weight: 25%
+What a strong candidate looks like: Has held a role where freight,
+documentation, customs, carriers or warehouse execution was their personal
+responsibility and failure had a same-day consequence - freight forwarding,
+CHA, port or terminal services, 3PL, NVOCC, carrier or shipper operations.
+Weak: logistics appears only as a customer, a vertical they sold into, or an
+API they integrated against.
+Score bands:
+  0-2   No contact with logistics, freight, supply chain or trade operations
+        anywhere in the record.
+  3-4   Adjacency only - built or sold software for logistics customers,
+        integrated a 3PL or courier API, worked at a logistics company in a
+        function with no operational consequence, or names supply chain in a
+        course, certification or interest line. Baseline exposure does not
+        clear 4.
+  5-6   An operations-adjacent role where logistics outcomes were one input
+        among several - planning, analytics or account management touching
+        shipments, but not accountable when something was stuck.
+  7-8   At least a year in a role where freight, documents or carriers were
+        their direct responsibility - CHA, freight forwarder desk, port or
+        terminal services, NVOCC, 3PL exception management - with specific
+        artefacts named (Bill of Lading, Shipping Bill, DO, HBL, berth window,
+        EDI filing).
+  9-10  Multiple years of that, plus at least one named incident they
+        personally resolved under a live deadline - a customs hold, an
+        inspection, a detention, a missed berth window.
+Source: Rohan, Sunita, Aditya, Meghna, Lavanya (all Exceeds). Absent in
+Vikram, Rahul, Preetham.
+
+Criterion name: Ownership Without Cover
+Weight: 20%
+What a strong candidate looks like: Named as the sole or most senior owner of a
+product area, process or account book, with the decision sitting with them.
+Weak: consistently described as supporting or contributing inside a team where
+someone more senior made the call.
+Score bands:
+  0-2   Every responsibility described as supporting, assisting or
+        contributing. No scope they owned.
+  3-4   Owned tasks or features inside a team where a senior person set
+        direction. A title containing "lead" or "senior", with no evidence the
+        call sat with them, stays here.
+  5-6   Owned a defined area, but inside a function that had a head - they set
+        the how, someone else set the what.
+  7-8   Sole or most senior owner of an area for a sustained period - "sole
+        PM", "no manager above", self-employed, or ran a cycle end to end -
+        with at least one decision of theirs named.
+  9-10  The above, plus evidence others deferred to their judgment: a review
+        quote, a practice they set, a call the team adopted.
+Source: Lavanya "sole PM"; Sunita self-employed; Aditya "no account manager
+layer". Contrast Vikram "supported senior PMs", Preetham "part of the
+12-engineer team".
+
+Criterion name: Documented Reversal or Failure
+Weight: 20%
+What a strong candidate looks like: The CV itself names something that did not
+work - a feature killed, a deal lost, an outage, a bug raised against their own
+product - together with what they did next.
+Score bands:
+  0-2   Every bullet is a win. Nothing stopped, lost, rolled back or
+        reconsidered anywhere.
+  3-4   A problem is mentioned but it belongs to someone else - a legacy
+        system, a vendor, a previous team. No exposure of their own.
+  5-6   Names something that went wrong inside their scope and how it was
+        fixed, without owning the decision that caused it.
+  7-8   Names a decision or build of their own that was wrong or was killed,
+        and what they did next - a feature killed on usage data, a deal lost,
+        an outage they wrote up.
+  9-10  The above, and the lesson became a practice other people now follow.
+Source: Lavanya killed 2 features and wrote the outage post-mortem; Aditya's
+documented lost deal. Absent in Vikram, Rahul, Preetham.
+
+Criterion name: Built the Missing Thing
+Weight: 20%
+What a strong candidate looks like: Created a tool, document or process that
+did not exist and that nobody assigned them, in an organisation that had no
+owner for it - and other people were still using it afterwards.
+Score bands:
+  0-2   No artefact created. Work described entirely as executing what already
+        existed.
+  3-4   Improved, templated or documented something that already had an owner
+        and a process. Certifications and tool lists count for nothing here.
+  5-6   Built something new for their own use or their immediate team, with no
+        evidence it outlived them.
+  7-8   Built something that did not exist, unprompted, in a place that had no
+        owner for it, and named adoption by other people.
+  9-10  The above, and it became permanent or standard - still in use, adopted
+        across teams, or absorbed into the product.
+Source: Rohan's BoL module (weekend build, 30 users in a month, now core
+product); Sunita's weekend workflow rebuild, retained permanently; Meghna's
+onboarding framework now used by the whole CS team.
+
+Criterion name: Absorbed Load Without Escalation
+Weight: 15%
+What a strong candidate looks like: Carried a surge, a departure or a crisis
+without extra headcount or handing it upward.
+Score bands:
+  0-2   No evidence of operating under pressure at all.
+  3-4   Describes a busy environment or high volume in general terms, with no
+        incident named and no indication the load was theirs to hold.
+  5-6   Handled an increase in scope, but with added support, headcount or an
+        extended timeline.
+  7-8   Carried a surge, a departure or a crisis at their own level without
+        extra resource - covered a colleague's book, absorbed volume through
+        process redesign, resolved a problem before it escalated.
+  9-10  The above, sustained over months, with the outcome held - no churn, no
+        slippage, no penalty.
+Source: Meghna covered a departing CSM's 8 accounts for 3 months with no churn;
+Rohan's 18-month volume surge with no added headcount.
+
+PM TOTAL: 100%
+
+---------------------------------------------------------------
+SENIOR PRODUCT MANAGER
+---------------------------------------------------------------
+
+Criterion name: Ownership Without Cover
+Weight: 30%
+What a strong candidate looks like: Final decision-maker on a product area,
+integration surface or business line for a sustained period, with no senior
+peer to escalate the call to. The bar is not autonomy on tasks but authority on
+direction.
+Score bands:
+  0-2   Supporting roles only. No scope owned.
+  3-4   Owned features or projects while a head of product, a founder or a
+        committee made the directional calls. Years of experience alone does
+        not move this.
+  5-6   Owned an area independently but inside a strategy someone else set, or
+        for less than a year.
+  7-8   Final decision-maker on a product area, integration surface or business
+        line for a sustained period, with named decisions and named
+        consequences they lived with.
+  9-10  The above, plus they set how the function itself worked - standards,
+        frameworks or decision rules that others then ran on.
+Source: Sunita's five self-employed years scoping, vendor-managing and running
+go-live alone; Lavanya as sole PM making calls engineering trusted immediately.
+
+Criterion name: Operational Accountability in Logistics
+Weight: 20%
+What a strong candidate looks like: Personal accountability inside a logistics
+operation with depth - years rather than an internship, and exposure to the
+messy edges.
+Score bands:
+  0-2   No contact with logistics, freight, supply chain or trade operations
+        anywhere in the record.
+  3-4   Adjacency - sold to, built for, or integrated with logistics. An
+        internship or a single project does not clear 4.
+  5-6   One to two years in an operations-adjacent role touching shipments,
+        planning or carrier coordination.
+  7-8   Multiple years directly accountable inside a logistics operation,
+        naming the messy edges - customs holds, carrier disputes, EDI or
+        ICEGATE filings, port or terminal timelines.
+  9-10  The above across more than one organisation or mode (sea and air,
+        forwarder and terminal, shipper and 3PL), with regulatory or inspection
+        exposure.
+Source: Sunita's 7 years across documentation, DGFT, ICEGATE EDI and customs
+audit; Rohan's CHA years at Nhava Sheva; Lavanya's carrier allocation at
+Mahindra.
+
+Criterion name: Documented Reversal or Failure
+Weight: 20%
+What a strong candidate looks like: Names a decision of their own that was
+wrong or a system of theirs that broke, the root cause, and the change made -
+and at senior level, evidence the lesson became someone else's practice.
+Score bands:
+  0-2   An unbroken record. Nothing ever stopped, lost or undone.
+  3-4   Failure named but attributed to others or to inherited systems.
+  5-6   Owns a problem inside their scope but not the decision behind it.
+  7-8   Names their own wrong decision or broken system, the root cause, and
+        the change they made in response.
+  9-10  The above, and the lesson became someone else's practice - a standard,
+        a checklist, a gate the team now runs.
+Source: Aditya's lost-deal post-mortem that became standard practice before
+account qualification; Lavanya's two killed features and owned outage
+follow-ups.
+
+Criterion name: Built the Missing Thing
+Weight: 15%
+What a strong candidate looks like: Established a standard, framework or
+integration that outlived their involvement and that others adopted.
+Score bands:
+  0-2   Nothing created.
+  3-4   Templates, documentation or improvements inside a process that already
+        had an owner.
+  5-6   Built something new that stayed within their own team.
+  7-8   Established a standard, framework or integration adopted beyond their
+        team.
+  9-10  The above, and it outlived their involvement - still in use after they
+        moved on, or absorbed into how the organisation works.
+Source: Lavanya wrote the product's first formal API documentation and the
+Tableau dashboard adopted by two other regional teams; Sunita's SOPs adopted in
+full in 60 days; Aditya's case study programme now used by the full sales team.
+
+Criterion name: Absorbed Load Without Escalation
+Weight: 15%
+What a strong candidate looks like: Held the line through a surge, a vendor
+breaking on them, an inspection or an outage, and resolved it at their own
+level.
+Score bands:
+  0-2   No evidence of operating under pressure.
+  3-4   General claims of a fast-paced or high-volume environment, with nothing
+        named.
+  5-6   Handled more scope, with more resource.
+  7-8   Held a surge, a vendor failure, an inspection or an outage at their own
+        level and resolved it there.
+  9-10  The above, sustained over months with the outcome held, and the
+        response institutionalised.
+Source: Sunita's weekend rebuild after the FMS vendor changed format without
+notice, and two customs inspections closed without penalty; Rohan's 18-month
+surge absorbed through process redesign.
+
+SPM TOTAL: 100%
+
+===============================================================
+SANITY CHECK - the rubric scored against its own source
+===============================================================
+Applied to the 8 hire profiles, this rubric must rank the five Exceeds hires
+above Vikram, Rahul and Preetham. If it does not, the rubric is wrong, not the
+hires. Re-run this check whenever a criterion or a band is edited.

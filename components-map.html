@@ -1,0 +1,444 @@
+<title>Kargo Hiring Pipeline Map</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --paper: #f4f5f6;
+    --card: #ffffff;
+    --ink: #101418;
+    --ink-2: #5a646e;
+    --rule: #cdd4da;
+    --rule-soft: #e3e8ec;
+    --accent: #0f6b5c;
+    --accent-soft: #dff0eb;
+    --warn: #8a5a08;
+    --warn-soft: #f7ecd8;
+    --crit: #9b2226;
+    --crit-soft: #f8e4e4;
+    --lane-a: #eef1f3;
+    --lane-b: #f8f9fa;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --paper: #0d1014;
+      --card: #14181d;
+      --ink: #e6eaee;
+      --ink-2: #96a1ac;
+      --rule: #2b333c;
+      --rule-soft: #1f262d;
+      --accent: #5fc9ad;
+      --accent-soft: #10332c;
+      --warn: #dfae5b;
+      --warn-soft: #33270f;
+      --crit: #ef8f8f;
+      --crit-soft: #331a1a;
+      --lane-a: #12161b;
+      --lane-b: #0f1317;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --paper: #0d1014; --card: #14181d; --ink: #e6eaee; --ink-2: #96a1ac;
+    --rule: #2b333c; --rule-soft: #1f262d; --accent: #5fc9ad; --accent-soft: #10332c;
+    --warn: #dfae5b; --warn-soft: #33270f; --crit: #ef8f8f; --crit-soft: #331a1a;
+    --lane-a: #12161b; --lane-b: #0f1317;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-inline: 20px;
+    padding-block: 40px 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+  }
+
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin: 0 0 8px;
+  }
+  h1 {
+    font-size: clamp(28px, 5vw, 40px);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    margin: 0 0 12px;
+    text-wrap: balance;
+    font-weight: 700;
+  }
+  .lede { margin: 0; max-width: 62ch; color: var(--ink-2); font-size: 16px; }
+
+  h2 {
+    font-size: 20px; letter-spacing: -0.015em; margin: 0 0 10px; font-weight: 650;
+    text-wrap: balance;
+  }
+  h3 { font-size: 15px; margin: 0 0 4px; font-weight: 650; }
+  p { margin: 0 0 12px; max-width: 68ch; }
+  p:last-child { margin-bottom: 0; }
+
+  figure { margin: 0; }
+  .scroller {
+    overflow-x: auto;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 6px;
+  }
+  .scroller svg { display: block; min-width: 900px; width: 100%; height: auto; }
+  figcaption {
+    margin-top: 12px; color: var(--ink-2); font-size: 13.5px; max-width: 68ch;
+  }
+
+  .grid { display: grid; gap: 14px; }
+  @media (min-width: 720px) { .grid.three { grid-template-columns: repeat(3, 1fr); } }
+  .box {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    border-radius: 3px;
+    padding: 14px 16px;
+  }
+  .box .tag {
+    font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 6px;
+  }
+  .box p { font-size: 14px; color: var(--ink-2); margin: 0; }
+
+  .cut {
+    background: var(--crit-soft);
+    border: 1px solid color-mix(in srgb, var(--crit) 35%, transparent);
+    border-radius: 3px;
+    padding: 18px 20px;
+  }
+  .cut h2 { color: var(--crit); margin-bottom: 8px; }
+  .cut p { color: var(--ink); }
+  .cut strong { color: var(--crit); }
+
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  .tablewrap { overflow-x: auto; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--rule-soft); vertical-align: top; }
+  th {
+    font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-2); border-bottom-color: var(--rule);
+    font-weight: 600; white-space: nowrap;
+  }
+  td:first-child { font-weight: 600; white-space: nowrap; }
+  .v-yes { color: var(--accent); font-weight: 650; }
+  .v-no { color: var(--crit); font-weight: 650; }
+
+  hr { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+  .foot { font-size: 13px; color: var(--ink-2); font-family: "IBM Plex Mono", monospace; }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Case 2 · Arjun / Kargo · Cohort C4</p>
+    <h1>Hiring pipeline — revised components map</h1>
+    <p class="lede">
+      The session map in Trigger → Input → Context → Processing → AI → Output form, redrawn with the three
+      steps the nine checks force into existence: the privacy boundary, the rank computation that decides
+      invite from rejection, and the confirm gate that is the only edge out.
+    </p>
+  </header>
+
+  <figure>
+    <div class="scroller">
+      <svg viewBox="0 0 1558 700" role="img"
+           aria-label="Swimlane diagram of the Kargo hiring pipeline. The founder uploads a CV and picks a role. The system extracts text, then a privacy boundary splits personal details into Supabase and passes only scrubbed CV content to the AI. The AI scores against both the PM and SPM rubrics. The system ranks candidates within their role and draws a line at the top five. The AI then writes a three-sentence brief and a draft invite or rejection. The founder reviews the ranked dashboard and only a manual confirm sends one email through Resend.">
+        <defs>
+          <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="currentColor"/>
+          </marker>
+          <marker id="ar-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/>
+          </marker>
+          <marker id="ar-c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--crit)"/>
+          </marker>
+        </defs>
+
+        <!-- lane bands -->
+        <rect x="0" y="56"  width="1558" height="124" fill="var(--lane-a)"/>
+        <rect x="0" y="180" width="1558" height="140" fill="var(--lane-b)"/>
+        <rect x="0" y="320" width="1558" height="118" fill="var(--lane-a)"/>
+        <rect x="0" y="438" width="1558" height="140" fill="var(--lane-b)"/>
+        <rect x="0" y="578" width="1558" height="114" fill="var(--lane-a)"/>
+
+        <!-- column headers -->
+        <g font-family="IBM Plex Mono, monospace" font-size="11.5" letter-spacing="1.4"
+           fill="var(--ink-2)" text-anchor="middle">
+          <text x="238"  y="34">TRIGGER</text>
+          <text x="414"  y="34">INPUT</text>
+          <text x="590"  y="34">CONTEXT</text>
+          <text x="766"  y="34">AI · SCORE</text>
+          <text x="942"  y="34">PROCESSING</text>
+          <text x="1118" y="34">AI · DRAFT</text>
+          <text x="1294" y="34">OUTPUT</text>
+          <text x="1470" y="34">SEND</text>
+        </g>
+        <line x1="0" y1="56" x2="1558" y2="56" stroke="var(--rule)" stroke-width="1"/>
+
+        <!-- lane dividers -->
+        <g stroke="var(--rule-soft)" stroke-width="1">
+          <line x1="0" y1="180" x2="1558" y2="180"/>
+          <line x1="0" y1="320" x2="1558" y2="320"/>
+          <line x1="0" y1="438" x2="1558" y2="438"/>
+          <line x1="0" y1="578" x2="1558" y2="578"/>
+          <line x1="150" y1="0" x2="150" y2="692"/>
+        </g>
+
+        <!-- lane labels -->
+        <g font-size="13" font-weight="600" fill="var(--ink)">
+          <text x="14" y="112">Founder</text>
+          <text x="14" y="130" font-size="11" font-weight="400" fill="var(--ink-2)">Arjun</text>
+          <text x="14" y="244">System</text>
+          <text x="14" y="262" font-size="11" font-weight="400" fill="var(--ink-2)">app backend</text>
+          <text x="14" y="374">Store</text>
+          <text x="14" y="392" font-size="11" font-weight="400" fill="var(--ink-2)">Supabase</text>
+          <text x="14" y="502">AI</text>
+          <text x="14" y="520" font-size="11" font-weight="400" fill="var(--ink-2)">Gemini Flash</text>
+          <text x="14" y="632">Email</text>
+          <text x="14" y="650" font-size="11" font-weight="400" fill="var(--ink-2)">Resend</text>
+        </g>
+
+        <!-- ================= boxes ================= -->
+        <g font-size="12.5" text-anchor="middle">
+
+          <!-- founder: upload -->
+          <rect x="162" y="83" width="152" height="70" rx="3" fill="var(--card)" stroke="var(--rule)"/>
+          <text fill="var(--ink)">
+            <tspan x="238" y="110">Uploads CV,</tspan>
+            <tspan x="238" y="128">picks role PM / SPM</tspan>
+          </text>
+
+          <!-- system: input -->
+          <rect x="338" y="215" width="152" height="70" rx="3" fill="var(--card)" stroke="var(--rule)"/>
+          <text fill="var(--ink)">
+            <tspan x="414" y="242">Text extraction</tspan>
+            <tspan x="414" y="260" fill="var(--ink-2)">pdf · docx</tspan>
+          </text>
+
+          <!-- system: privacy boundary -->
+          <rect x="514" y="195" width="152" height="110" rx="3" fill="var(--accent-soft)"
+                stroke="var(--accent)" stroke-width="2"/>
+          <text>
+            <tspan x="590" y="219" font-family="IBM Plex Mono, monospace" font-size="10"
+                   letter-spacing="0.8" fill="var(--accent)">PRIVACY BOUNDARY</tspan>
+            <tspan x="590" y="242" fill="var(--ink)">Split PII, scrub</tspan>
+            <tspan x="590" y="260" fill="var(--ink)">body, assert clean</tspan>
+            <tspan x="590" y="284" font-size="11" fill="var(--ink-2)">no model call here</tspan>
+          </text>
+
+          <!-- store: personal details -->
+          <rect x="480" y="349" width="130" height="60" rx="3" fill="var(--card)"
+                stroke="var(--accent)" stroke-dasharray="4 3"/>
+          <text>
+            <tspan x="545" y="374" fill="var(--ink)" font-size="12">personal_details</tspan>
+            <tspan x="545" y="392" font-size="11" fill="var(--accent)">never leaves</tspan>
+          </text>
+
+          <!-- AI: scoring -->
+          <rect x="690" y="463" width="152" height="90" rx="3" fill="var(--card)" stroke="var(--rule)"/>
+          <text fill="var(--ink)">
+            <tspan x="766" y="490">Score vs PM</tspan>
+            <tspan x="766" y="508">AND SPM rubric</tspan>
+            <tspan x="766" y="530" font-size="11" fill="var(--ink-2)">0–10 + reason each</tspan>
+          </text>
+
+          <!-- store: scores -->
+          <rect x="866" y="349" width="152" height="60" rx="3" fill="var(--card)"
+                stroke="var(--rule)" stroke-dasharray="4 3"/>
+          <text fill="var(--ink)">
+            <tspan x="942" y="374">scores</tspan>
+            <tspan x="942" y="392" font-size="11" fill="var(--ink-2)">+ per-criterion reason</tspan>
+          </text>
+
+          <!-- system: rank and line -->
+          <rect x="866" y="205" width="152" height="90" rx="3" fill="var(--card)"
+                stroke="var(--accent)" stroke-width="2"/>
+          <text>
+            <tspan x="942" y="230" font-family="IBM Plex Mono, monospace" font-size="10"
+                   letter-spacing="0.8" fill="var(--accent)">RANK &amp; LINE</tspan>
+            <tspan x="942" y="253" fill="var(--ink)">Rank within role</tspan>
+            <tspan x="942" y="271" fill="var(--ink)">top 5 = above line</tspan>
+          </text>
+
+          <!-- AI: drafting -->
+          <rect x="1042" y="463" width="152" height="90" rx="3" fill="var(--card)" stroke="var(--rule)"/>
+          <text fill="var(--ink)">
+            <tspan x="1118" y="490">3-sentence brief</tspan>
+            <tspan x="1118" y="508">+ draft email</tspan>
+            <tspan x="1118" y="530" font-size="11" fill="var(--ink-2)">invite or rejection</tspan>
+          </text>
+
+          <!-- store: drafts -->
+          <rect x="1218" y="349" width="152" height="60" rx="3" fill="var(--card)"
+                stroke="var(--rule)" stroke-dasharray="4 3"/>
+          <text fill="var(--ink)">
+            <tspan x="1294" y="374">briefs + drafts</tspan>
+            <tspan x="1294" y="392" font-size="11" fill="var(--ink-2)">[NAME] substituted here</tspan>
+          </text>
+
+          <!-- founder: dashboard -->
+          <rect x="1218" y="83" width="152" height="90" rx="3" fill="var(--card)" stroke="var(--rule)"/>
+          <text fill="var(--ink)">
+            <tspan x="1294" y="110">Ranked dashboard</tspan>
+            <tspan x="1294" y="128">score breakdown,</tspan>
+            <tspan x="1294" y="146">brief, editable draft</tspan>
+          </text>
+
+          <!-- founder: confirm gate -->
+          <rect x="1394" y="83" width="152" height="70" rx="3" fill="var(--crit-soft)"
+                stroke="var(--crit)" stroke-width="2.5"/>
+          <text>
+            <tspan x="1470" y="110" font-family="IBM Plex Mono, monospace" font-size="10.5"
+                   letter-spacing="0.9" fill="var(--crit)">CONFIRM GATE</tspan>
+            <tspan x="1470" y="132" fill="var(--ink)">human, per candidate</tspan>
+          </text>
+
+          <!-- resend -->
+          <rect x="1394" y="600" width="152" height="70" rx="3" fill="var(--card)" stroke="var(--rule)"/>
+          <text fill="var(--ink)">
+            <tspan x="1470" y="628">Sends one email</tspan>
+            <tspan x="1470" y="646" font-size="11" fill="var(--ink-2)">marks sent, freezes draft</tspan>
+          </text>
+        </g>
+
+        <!-- ================= arrows ================= -->
+        <g fill="none" stroke="var(--ink-2)" stroke-width="1.5" color="var(--ink-2)">
+          <path d="M314 118 H326 V250 H334" marker-end="url(#ar)"/>
+          <path d="M490 250 H510" marker-end="url(#ar)"/>
+          <path d="M1018 250 H1118 V459" marker-end="url(#ar)"/>
+          <path d="M942 349 V299" marker-end="url(#ar)"/>
+          <path d="M842 508 H854 V379 H862" marker-end="url(#ar)"/>
+          <path d="M1194 508 H1206 V379 H1214" marker-end="url(#ar)"/>
+          <path d="M1294 349 V177" marker-end="url(#ar)"/>
+          <path d="M1370 118 H1390" marker-end="url(#ar)"/>
+        </g>
+
+        <!-- privacy-critical edges -->
+        <g fill="none" stroke="var(--accent)" stroke-width="2">
+          <path d="M545 305 V345" marker-end="url(#ar-a)"/>
+          <path d="M630 305 V445 H766 V459" marker-end="url(#ar-a)"/>
+        </g>
+
+        <!-- the only edge out -->
+        <g fill="none" stroke="var(--crit)" stroke-width="2.5">
+          <path d="M1470 153 V596" marker-end="url(#ar-c)"/>
+        </g>
+
+        <!-- edge labels -->
+        <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--ink-2)">
+          <text x="336" y="204" text-anchor="middle">file + role</text>
+          <text x="556" y="336" fill="var(--accent)">name · email · phone</text>
+          <text x="640" y="432" fill="var(--accent)">cv_content only</text>
+          <text x="960" y="340">write</text>
+          <text x="1126" y="452">read</text>
+          <text x="1302" y="196">read</text>
+          <text x="1482" y="400" fill="var(--crit)">one click,</text>
+          <text x="1482" y="416" fill="var(--crit)">one candidate</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>
+      Two colours carry meaning. Green marks the privacy boundary and the two edges leaving it — personal
+      details go down into Supabase and stop there; only scrubbed content continues to Gemini. Red marks the
+      confirm gate and the single edge into Resend. Everything else is grey.
+    </figcaption>
+  </figure>
+
+  <hr>
+
+  <section>
+    <h2>What changed, and why it had to</h2>
+    <div class="grid three">
+      <div class="box">
+        <span class="tag">Added · System</span>
+        <h3>Privacy boundary</h3>
+        <p>
+          The original map had "excludes personal details from AI" as a parenthetical inside the extraction
+          box. It is not a parenthetical. It is the one step that decides whether this is DPDP-defensible,
+          and it is the one step that must not be an AI step — if a model does the separating, the details
+          have already left the building before they were separated.
+        </p>
+      </div>
+      <div class="box">
+        <span class="tag">Added · System</span>
+        <h3>Rank &amp; line</h3>
+        <p>
+          Invite or rejection is not a property of a candidate. It is a property of their rank, and rank
+          changes every time another CV is added. Drawing it as its own box makes it clear the email type
+          has to be recomputed, not decided once at generation time.
+        </p>
+      </div>
+      <div class="box">
+        <span class="tag">Added · Founder</span>
+        <h3>Confirm gate</h3>
+        <p>
+          The Cut lives here. Drawing it as a box in the founder lane makes visible what the prose only
+          asserts: the only edge into Resend originates in a human action, on one named candidate, one at
+          a time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The nine checks</h2>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Check</th><th>Verdict</th><th>Evidence</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>01</td><td>Problem real?</td><td class="v-yes">Yes</td><td>60 received, 19 opened, 0 offers in 11 weeks. The cost compounds weekly.</td></tr>
+          <tr><td>02</td><td>Workflow repeated?</td><td class="v-yes">Yes</td><td>Applications arrive weekly; the review-and-stall cycle repeats every batch.</td></tr>
+          <tr><td>03</td><td>Input available?</td><td class="v-yes">Yes</td><td>60 CVs, 8 rated hire profiles, 2 role specs. All of it exists today.</td></tr>
+          <tr><td>04</td><td>Output valuable?</td><td class="v-yes">Yes</td><td>A ranked list with a reason per criterion replaces 60 unreviewed PDFs.</td></tr>
+          <tr><td>05</td><td>Impact measurable?</td><td class="v-yes">Yes</td><td>Baseline 0 offers in 11 weeks; target first offer within 2 weeks.</td></tr>
+          <tr><td>06</td><td>Failure risk OK?</td><td class="v-yes">Yes</td><td>For ranking — a mis-ranked candidate is still visible below the line.</td></tr>
+          <tr><td>06</td><td>…for auto-rejection</td><td class="v-no">No</td><td>A wrongly rejected candidate never knows and never returns. No feedback loop, no recovery.</td></tr>
+          <tr><td>07</td><td>Judgment protected?</td><td class="v-yes">Yes</td><td>Arjun reviews every shortlist and confirms every send.</td></tr>
+          <tr><td>08</td><td>ROI worth it?</td><td class="v-yes">Yes</td><td>A PM hire is 6–12 months of product velocity. Every week open costs more than the build.</td></tr>
+          <tr><td>09</td><td>Owner clear?</td><td class="v-yes">Yes</td><td>For the shortlist — Arjun owns the decision.</td></tr>
+          <tr><td>09</td><td>…for auto-rejection</td><td class="v-no">No</td><td>No named person is accountable for a system rejection of a specific person. That is a liability.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="cut">
+    <h2>The Cut</h2>
+    <p>
+      <strong>Asked for:</strong> auto-send to rejected and selected candidates once he confirms.
+      <strong>Killed by:</strong> check 06 and check 09.
+    </p>
+    <p>
+      <strong>Automated:</strong> extraction, PII separation, scoring, ranking, brief generation, email drafting.
+      <strong>Human:</strong> the shortlist review, the confirm-to-send decision, the hiring call.
+    </p>
+    <p>
+      The system ranks and explains. Arjun looks at everything below the line once — ten minutes, not ten
+      hours, because the ranking does the heavy lifting. Nothing is rejected on his behalf, because a wrong
+      rejection is one he cannot fix.
+    </p>
+  </div>
+
+  <hr>
+  <p class="foot">MESA AI and its Applications · Case 2 · Kargo, Arjun Mehta and all associated data are fictional.</p>
+</div>
