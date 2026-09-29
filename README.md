@@ -59,6 +59,11 @@ See [rubric.txt](./rubric.txt) for the full criteria, weights and bands.
 Next.js 15 (App Router) · TypeScript · Supabase (Postgres) · Gemini via
 structured output · Resend · deployed on Vercel.
 
+## Deploying
+
+`main` is the production branch and the repo is connected to Vercel, so a push
+deploys. Environment variables live in the Vercel project, not in the repo.
+
 ## Running it
 
 ```bash
