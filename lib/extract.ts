@@ -23,7 +23,12 @@ const PHONE_RE =
 const URL_RE =
   /(?:https?:\/\/)?(?:www\.)?(?:linkedin\.com|github\.com|leetcode\.com|behance\.net|medium\.com|twitter\.com|x\.com)\/[A-Za-z0-9._\-\/]+/gi;
 
-const NON_NAME = /\b(resume|curriculum|vitae|cv|profile|summary|experience)\b/i;
+// A CV header often puts the role directly under the name, and "Product Manager"
+// parses as a two-word capitalised phrase exactly like a name does. So the name
+// heuristic has to reject job-title vocabulary outright, or the invite email
+// opens with "Hi Product Manager,".
+const NON_NAME =
+  /\b(resume|curriculum|vitae|cv|profile|summary|experience|manager|director|engineer|product|senior|junior|lead|leader|head|chief|consultant|analyst|associate|executive|specialist|officer|founder|intern|strategy|strategic|operations|growth|marketing|sales|design|designer|developer|architect|principal|staff|advisor|partner|freelance|portfolio|contact|about|problem|solution|objective|overview|background|approach|context|note|notes|page)\b/i;
 
 function titleCase(s: string) {
   return s
